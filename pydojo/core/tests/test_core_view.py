@@ -27,14 +27,14 @@ class TestCoreView:
         response = self.client.get(url)
         tags = (
             ('<title>', 1),
-            ('<label for="code-editor">', 1),
-            ('<button id="show".*</button>', 1),
-            ('<textarea id="code-editor".*</textarea>', 1),
+            ('<form.*method="post"', 1),
+            ('<input id="csrf_token" name="csrf_token" type="hidden".*', 1),
+            ('<textarea.*id="source_code".*</textarea>', 1),
+            ('<button type="submit".*</button>', 1),
             ('<script src="/static/js/jquery.min.js"></script>', 1),
             ('<script src="/static/js/bootstrap.min.js"></script>', 1),
             ('<link href="/static/css/bootstrap.min.css".*>', 1),
             ('<link href="/static/css/bootstrap-theme.min.css".*>', 1),
-            ('<meta name="csrf-token"', 1),
         )
         content = response.data.decode('utf-8')
         for text, count in tags:
