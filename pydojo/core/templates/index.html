@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-group">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <label for="code-editor">Your text:</label>
+    <textarea id="code-editor" class="form-control" rows="30" cols="79"></textarea>
+    <button id="show" class="form-control">Show code</button>
+</div>
+{% endblock %}
