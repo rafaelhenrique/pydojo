@@ -1,11 +1,8 @@
 from flask import Flask
-from flask_wtf.csrf import CsrfProtect
 
 from pydojo import config
 from pydojo.core import core_blueprint
-
-
-csrf = CsrfProtect()
+from pydojo.ext import csrf, migrate, db
 
 
 def create_app(config=config.ProductionConfig):
@@ -43,3 +40,5 @@ def register_jinja_env(app):
 
 def register_extensions(app):
     csrf.init_app(app)
+    db.init_app(app)
+    migrate.init_app(app, db)

@@ -46,9 +46,21 @@ requirements: required-env
 	@if [ $(env) == "dev" ]; then pip install -r requirements/development.txt; fi
 	@if [ $(env) == "test" ]; then pip install -r requirements/development.txt; fi
 
-# -- redis
+# -- database management and execution
 
-redis-docker-start:
-	echo "Starting redis with docker..."
-	@sudo ./contrib/start_redis_docker.sh
+initialize-db:
+	@python manage.py db init
+
+create-migrations:
+	@python manage.py db migrate
+
+apply-migration:
+	@python manage.py db upgrade
+
+revert-migration:
+	@python manage.py db downgrade
+
+postgresql-docker-start:
+	echo "Starting postgresql with docker..."
+	@sudo ./contrib/start_postgresql_docker.sh
 

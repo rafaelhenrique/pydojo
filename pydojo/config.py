@@ -7,12 +7,16 @@ class BaseConfig(object):
     SERVER_NAME = config('SERVER_NAME')
     LOGENABLE = True
     DEBUG = False
+    SQLALCHEMY_ECHO = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = config('DATABASE_URI')
 
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
     ASSETS_DEBUG = True
     WTF_CSRF_ENABLED = True
+    SQLALCHEMY_ECHO = True
 
 
 class TestConfig(BaseConfig):
