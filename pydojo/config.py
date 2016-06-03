@@ -22,6 +22,7 @@ class DevelopmentConfig(BaseConfig):
 class TestConfig(BaseConfig):
     TESTING = True
     WTF_CSRF_ENABLED = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///pydojo.sqlite3'
 
 
 class ProductionConfig(BaseConfig):
