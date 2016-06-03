@@ -4,7 +4,7 @@ from pydojo.ext import db as db_test
 from pydojo.config import TestConfig
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='module')
 def app(request):
     app = create_app(TestConfig)
     ctx = app.app_context()
@@ -17,7 +17,7 @@ def app(request):
     return app
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='module')
 def db(app, request):
     def teardown():
         db_test.drop_all()

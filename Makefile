@@ -14,7 +14,7 @@ check-debugger:
 	@find pydojo -type f -exec egrep -iH "set_trace" {} \+ && echo "Ooops! Found 1 set_trace on your source code!" && exit 1 || exit 0
 
 test-travis: clean check-debugger
-	py.test -n 2 pydojo
+	py.test pydojo
 
 test: SHELL:=/bin/bash
 test: clean
