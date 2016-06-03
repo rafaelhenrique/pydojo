@@ -3,7 +3,8 @@
 <form action="{{ url_for('core.editor', hashkey=hashkey) }}" method="post" id="form">
 <div class="form-group">
     {{ form.csrf_token }}
-    {{ form.source_code(rows=30, cols=79, class="form-control") }}
+    {{ form.hashkey }}
+    {{ form.code(rows=30, cols=79, class="form-control") }}
     <button type="submit" class="form-control btn btn-primary">Salvar</button>
 </form>
 {% endblock %}

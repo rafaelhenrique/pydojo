@@ -13,5 +13,7 @@ def index():
 
 @core_blueprint.route('editor/<hashkey>', methods=['GET', 'POST'])
 def editor(hashkey):
-    form = CodeEditorForm()
+    form = CodeEditorForm(hashkey=hashkey)
+    if form.validate_on_submit():
+        form.save()
     return render_template('index.html', hashkey=hashkey, form=form)
