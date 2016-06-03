@@ -5,6 +5,12 @@ python:
 
 cache: pip
 
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database travis_database;' -U postgres
+
 install:
   - make .env env=test
   - make requirements env=test

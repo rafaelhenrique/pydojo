@@ -33,7 +33,7 @@ coverage: clean
 .env: SHELL:=/bin/bash
 .env: required-env
 	@if [ $(env) == "dev" -a ! -e .env ]; then cp contrib/env-sample .env; fi
-	@if [ $(env) == "test" -a ! -e .env ]; then cp contrib/env-sample .env; fi
+	@if [ $(env) == "test" -a ! -e .env ]; then cp contrib/env-test .env; fi
 
 required-env: SHELL:=/bin/bash
 required-env:
